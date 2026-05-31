@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024年度 流体力学II 期末試験問題</title>
+    <style>
+        
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 'Times New Roman', 'Noto Serif JP', 'Georgia', serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+}
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+.exam-meta {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
+h2 {
+    font-size: 18px;
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
+    margin-top: 40px;
+    color: #111;
+}
+h3 {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+p, li {
+    font-size: 14px;
+}
+ul, ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+li {
+    margin-bottom: 5px;
+}
+blockquote {
+    border-left: 3px solid #ccc;
+    padding-left: 15px;
+    color: #555;
+    background-color: #f9f9f9;
+    margin: 15px 0;
+    padding: 10px 15px;
+}
+code {
+    font-family: Monaco, Consolas, 'Courier New', Courier, monospace;
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 90%;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.2;
+    overflow-x: auto;
+}
+strong, b {
+    font-weight: normal;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+div[align="center"] {
+    text-align: center;
+    margin: 20px 0;
+}
+div[align="center"] p {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+.download-container {
+    text-align: center;
+    margin: 20px 0 30px 0;
+}
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #333;
+    transition: all 0.2s ease;
+}
+.download-btn:hover {
+    background-color: #f4f4f4;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+    </style>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        enableMenu: false
+      }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="download-container">
+        <a href="./fluid_dynamics_exam2024.pdf" target="_blank" class="download-btn">📄 PDF版問題用紙を表示・ダウンロード</a>
+    </div>
+    <h1>2024年度 流体力学II 期末試験 問題</h1>
+<p><u>試験時間：</u> 90分<br />
+<u>満点：</u> 78点満点（第1問 27点、第2問 35点、第3問 16点）<br />
+<u>注意：</u> 計算過程もわかりやすく記述すること。  </p>
+<hr />
+<h2>【第1問】（計27点）</h2>
+<p>図1に示すように、平板壁面（ $y = 0$ ）の上に発達する 2次元定常・非圧縮性の層流境界層を考える。平板の前縁（ $x = 0$ ）から主流方向（下流方向）に座標軸 $x$ を、壁面に垂直な方向に座標軸 $y$ をとる。また、主流速度（境界層外縁での速度）を $U$、境界層厚さを $\delta(x)$ とする。</p>
+<div align="center">
+  <img src="images/boundary_layer.png" width="80%" alt="図1 平板上の層流境界層の概略図">
+  <p>図1 平板上の層流境界層の概略図</p>
+</div>
+
+<p>この層流境界層内の流速分布 $u(y)$ を、正弦関数を用いて次の簡易モデルで近似する。
+$$u(y) = U \sin\left( \frac{\pi y}{2\delta} \right) \quad (0 \le y \le \delta)$$
+この流速近似モデルは、壁面における粘着条件（ $y=0$ で $u=0$ ）および境界層外縁における接続条件（ $y=\delta$ で $u=U$ かつ $\frac{\partial u}{\partial y} = 0$ ）を満たしている。以下の問いに答えよ。</p>
+<h3>(a) 壁面摩擦応力の定式化とスケーリング（12点）</h3>
+<p>壁面における摩擦応力 $\tau_w$ は、流体の粘性係数 $\mu$ を用いて $\tau_w = \mu \left. \frac{\partial u}{\partial y} \right|_{y=0}$ と定義される。
+与えられた流速近似モデルを用いて $\tau_w$ を表すと、次式が得られる。
+$$\tau_w = \frac{\pi}{2} \frac{\mu U}{\delta}$$
+この式を、流体密度 $\rho$ を含む一般的なスケーリング則の表現：
+$$\tau_w = \frac{A_2}{A_1} \rho^{A_3} \mu^{A_4} U^{A_5} \delta^{A_6}$$
+と比較したとき、定数 $A_1 \sim A_6$ の値は、それぞれ $A_1 = \underline{\text{ (a1) }}$, $A_2 = \underline{\text{ (a2) }}$, $A_3 = \underline{\text{ (a3) }}$, $A_4 = \underline{\text{ (a4) }}$, $A_5 = \underline{\text{ (a5) }}$, $A_6 = \underline{\text{ (a6) }}$ となる。<u>空欄 (a1) 〜 (a6) に入る適切な数値または記号を答えよ。</u>（各2点）</p>
+<h3>(b) 運動量厚さ $\theta$ の積分計算（9点）</h3>
+<p>境界層の運動量厚さ $\theta$ は、次式で定義される。
+$$\theta = \int_0^\delta \frac{u}{U} \left(1 - \frac{u}{U}\right) dy$$
+この定義式に上記の流速近似モデルを代入し、三角関数の加法定理（半角の公式） $\sin^2\phi = \frac{1}{2}(1 - \cos 2\phi)$ を用いて積分を実行すると、$\theta$ は $\delta$ の関数として次のように求まる。
+$$\theta = \left( \frac{2}{\pi} - \frac{1}{2} \right) \delta$$
+この結果を、定数 $B_1 \sim B_3$ を用いた次の形式：
+$$\theta = \left( \frac{B_1}{\pi} + B_2 \right) \delta^{B_3}$$
+と比較したとき、それぞれの定数は $B_1 = \underline{\text{ (b1) }}$, $B_2 = \underline{\text{ (b2) }}$, $B_3 = \underline{\text{ (b3) }}$ となる。<u>空欄 (b1) 〜 (b3) に入る適切な数値を答えよ。</u>（各3点）</p>
+<h3>(c) 境界層厚さ $\delta(x)$ の常微分方程式の解法（6点）</h3>
+<p>カルマンの運動量積分方程式：
+$$\frac{\tau_w}{\rho U^2} = \frac{d\theta}{dx}$$
+に、(a) および (b) で得られた結果を代入することにより、$\delta(x)$ に関する常微分方程式を導け。
+この微分方程式を、平板前縁における境界条件 $\delta(0) = 0$ のもとで解き、局所レイノルズ数 $Re_x = \frac{\rho U x}{\mu}$ を用いて無次元化した境界層厚さの比 $\frac{\delta}{x}$ を表せ。
+ここで、<u>円周率を $\pi \approx 3$ と近似し、かつ $C_1$ は小数第1位を四捨五入して小数第1位まで表す</u>とき、比 $\frac{\delta}{x}$ は次の形式：
+$$\frac{\delta}{x} = C_1 Re_x^{C_2}$$
+となる。このとき、定数 $C_1 = \underline{\text{ (c1) }}$, $C_2 = \underline{\text{ (c2) }}$ となる。<u>空欄 (c1), (c2) に入る適切な数値または数式を答えよ。</u>（各3点）</p>
+<hr />
+<h2>【第2問】（計35点）</h2>
+<p>複素平面 $z = x + iy$ において、一様流 $U$（ $x$ 軸の正の方向）の中に、強さ $m$（ $m > 0$ ）の湧き出しを点 $z = -a$ （ $a > 0$ ）に、強さ $m$ の吸い込みを点 $z = a$ にそれぞれ配置した 2次元非圧縮性・湧き出しを伴うポテンシャル流れ（ランキン・オーバル）を考える（図2）。</p>
+<div align="center">
+  <img src="images/cylinder_coordinates.png" width="70%" alt="図2 複素平面上の配置とランキン・オーバル">
+  <p>図2 複素平面上の配置とランキン・オーバル</p>
+</div>
+
+<p>この流れの複素ポテンシャル $W(z)$ は次式で与えられる。
+$$W(z) = Uz + m \log(z+a) - m \log(z-a)$$
+ここで、$\log$ は主値をとるものとする。以下の問いに答えよ。</p>
+<h3>(a) 複素速度とよどみ点（12点）</h3>
+<ol>
+<li>この流れの複素速度 $\frac{dW}{dz} = u - iv$ を $z$ の関数として求めよ。（3点）</li>
+<li>実軸上（ $y=0$ ）に存在するよどみ点（速度がゼロとなる点）の座標を $z = \pm L$ （ $L > a$ ）とする。このとき、$L, a, m, U$ の間に成り立つ関係式を求めよ。（3点）</li>
+<li>得られた関係式を次の形式：
+   $$L^2 - a^2 = A_1 m^{A_2} a^{A_3} U^{A_4}$$
+   と比較したとき、それぞれの定数は $A_1 = \underline{\text{ (a1) }}$, $A_2 = \underline{\text{ (a2) }}$, $A_3 = \underline{\text{ (a3) }}$, $A_4 = \underline{\text{ (a4) }}$ となる。<u>空欄 (a1) 〜 (a4) に入る適切な数値を答えよ。</u>（各1.5点、計6点）</li>
+</ol>
+<h3>(b) 流れの関数 $\psi$ の導出（12点）</h3>
+<p>複素速度ポテンシャル $W(z)$、速度ポテンシャル $\phi$、および流れの関数 $\psi$ の間には、 $W = \phi + i\psi$ の関係がある。
+極座標表示として $z = x + iy$、 $z+a = r_1 e^{i\theta_1}$、 $z-a = r_2 e^{i\theta_2}$ （ただし $r_1, r_2 \ge 0$、 $-\pi < \theta_1, \theta_2 \le \pi$ ）を代入することにより、流れの関数 $\psi(x, y)$ を表す式を求めよ。
+また、次の各項（1〜6）のうち、得られた流れの関数 $\psi$ の式の中に<u>含まれるものには「○」、含まれないものには「×」と答えよ。</u>（各2点）
+1. $Ux$
+2. $Uy$
+3. $m \log r_1$
+4. $m \log r_2$
+5. $m\theta_1$
+6. $m\theta_2$</p>
+<h3>(c) よどみ点およびランキン・オーバルの半幅（計11点）</h3>
+<ol>
+<li>よどみ点 A（ $x = L, y = 0$ ）を通る流線 $\psi = \text{const.}$ はランキン・オーバルの輪郭線を表す。このよどみ点 A における流れの関数 $\psi$ の値を求めよ。ただし、実軸上の $x > a$ においては $\theta_1 = \theta_2 = 0$ とする。（2点）</li>
+<li>ランキン・オーバルの輪郭線が $y$ 軸と交わる点の $y$ 座標（オーバルの半幅）を $h$ （ $h > 0$ ）とするとき、関係式 $Uh = m\left(\pi - 2\arctan\left(\frac{h}{a}\right)\right)$ が成り立つ。
+ここで、オーバルの半幅がちょうど $h = a$ となる幾何学的極限条件を考える。このときの無次元比 $\frac{Ua}{m}$ の値を求めよ。
+さらに、円周率を $\pi \approx 3.14$ とし、四捨五入によって有効数字2桁（小数第1位まで）で $\frac{Ua}{m} \approx C_1.C_2 \times 10^{C_3}$ の形式（ただし $C_1, C_2$ は 1 桁の自然数または 0、$C_3$ は整数）で近似して表すとき、定数 $C_1 = \underline{\text{ (c1) }}$, $C_2 = \underline{\text{ (c2) }}$, $C_3 = \underline{\text{ (c3) }}$ となる。<u>空欄 (c1) 〜 (c3) に入る適切な数値を答えよ。</u>（9点：各3点）</li>
+</ol>
+<hr />
+<h2>【第3問】（計16点）</h2>
+<p>流体中における物体の運動、それに働く流体力学的抗力、およびレイノルズ数の影響について考える。以下の問いに答えよ。</p>
+<h3>(a) 等速運動時の力のつり合い（6点）</h3>
+<p>一様な流れ（流速 $U$）の中に質量 $m$ の小球を軽い糸で吊るしたところ、糸が鉛直方向から角度 $\theta$ （ $0 < \theta < \frac{\pi}{2}$ ）だけ傾いた状態で静止した（図3）。このとき小球に働く流体力学的抗力 $D$、重力加速度 $g$、および傾き角 $\theta$ の間に成り立つ力のつり合いの関係式を、$\frac{D}{mg}$ を左辺とする形で導け。ただし、流体による浮力および糸に働く抗力は無視できるものとする。</p>
+<div align="center">
+  <img src="images/sphere_drag.png" width="60%" alt="図3 流れの中の吊り下げられた小球">
+  <p>図3 流れの中の吊り下げられた小球</p>
+</div>
+
+<h3>(b) 抗力係数の比較（6点）</h3>
+<p>一般に物体が受ける抗力 $D$ は、流体密度 $\rho$、物体の代表面積 $A$、主流速度 $U$、および抗力係数 $C_D$ を用いて次式で定義される。
+$$D = \frac{1}{2} C_D \rho U^2 A$$
+(a) の実験系において、小球の質量 $m$ や流体密度 $\rho$、代表面積 $A$ を変更せずに、主流速度を $U$ から $U' = \frac{U}{2}$ に変化させたところ、小球の傾き角 $\theta$ が変化し、結果として小球に働く抗力の値は $D$ のまま変化しなかった（ $D' = D$ ）とする。このときの抗力係数の比 $\frac{C'_D}{C_D}$ の値を求めよ。</p>
+<h3>(c) 臨界レイノルズ数と抗力危機（4点）</h3>
+<p>球や円柱のような鈍頭物体（Bluff body）の周りの流れにおいて、レイノルズ数 $Re$ を増加させていくと、ある特定の範囲で抗力係数 $C_D$ が急激に低下する「抗力危機（Drag crisis）」と呼ばれる現象が発生する。
+例えば、球においてレイノルズ数が $Re \approx 2.0 \times 10^5$ から $Re \approx 4.0 \times 10^5$ へと増加する付近でこの現象が観察される。<u>この現象が発生する物理的な原因について、「境界層の層流から乱流への遷移」および「剥離位置の変化」の2つの観点を必ず含めて、2行〜3行程度で論理的かつ簡潔に説明せよ。</u></p>
+</body>
+</html>
